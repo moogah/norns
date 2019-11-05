@@ -66,6 +66,8 @@ Crone {
 		}, {
 			Server.scsynth;
 			server = Server.local;
+			// Additional outputs for Expert Sleepers ES-8 config
+			server.options.numOutputBusChannels = 8;
 			// doesn't work on supernova - "invallid argument" - too big?
 			// server.options.memSize = 2**16;
 			server.latency = 0.05;
@@ -86,6 +88,10 @@ Crone {
 		//Crone.runShellCommand("jack_connect \"supernova:output_2\" \"crone:input_6\"");
 		Crone.runShellCommand("jack_connect \"SuperCollider:out_1\" \"crone:input_5\"");
 		Crone.runShellCommand("jack_connect \"SuperCollider:out_2\" \"crone:input_6\"");
+
+		// Additonal mappings for Expert Sleepers ES-8
+		Crone.runShellCommand("jack_connect \"SuperCollider:out_3\" \"system:playback_3\"");
+		Crone.runShellCommand("jack_connect \"SuperCollider:out_4\" \"system:playback_4\"");
 
 		CroneDefs.sendDefs(server);
 		server.sync;
